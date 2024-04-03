@@ -54,9 +54,9 @@ variable "tags" {
 variable "backend" {
   type = map(string)
   default = {
-    bucket         = "cyprienbucket"
-    dynamodb_table = "terraform-lock"
-    key            = "TCC/ec2/terraform.tfstate"
-    region         = "us-east-1"
+    bucket         = ""
+    dynamodb_table = ""
+    key            = ""
+    region         = ""
   }
 }

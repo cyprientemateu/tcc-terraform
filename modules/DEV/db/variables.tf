@@ -86,9 +86,9 @@ variable "preferred_backup_window" {
 variable "backend" {
   type = map(string)
   default = {
-    bucket         = "cyprienbucket"
-    dynamodb_table = "terraform-lock"
-    key            = "TCC/aurora-PostgreSQL-db/terraform.tfstate"
-    region         = "us-east-1"
+    bucket         = ""
+    dynamodb_table = ""
+    key            = ""
+    region         = ""
   }
 }
