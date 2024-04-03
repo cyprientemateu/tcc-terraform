@@ -30,10 +30,10 @@ psql --host=example-cluster.cluster-cv3uwkomseya.us-east-1.rds.amazonaws.com --p
 
 psql --host=example-cluster.cluster-ro-cv3uwkomseya.us-east-1.rds.amazonaws.com --port=5432 --username=adminuser --password --dbname=postgres 
 
-psql --host=alpha-0.devopseasylearning.net --port=5432 --username=adminuser --password --dbname=postgres 
-psql --host=alpha-1.devopseasylearning.net --port=5432 --username=adminuser --password --dbname=postgres
+psql --host=artifactory.tcclearning.cf --port=5432 --username=adminuser --password --dbname=postgres 
+psql --host=artifactory.tcclearning.cf --port=5432 --username=adminuser --password --dbname=postgres
 
-psql --host=artifactory.devopseasylearning.net --port=5432 --username=adminuser --password --dbname=artifactory
+psql --host=artifactory.tcclearning.cf --port=5432 --username=adminuser --password --dbname=artifactory
 ```
 
 ### List databases
@@ -82,7 +82,7 @@ DROP DATABASE IF EXISTS sales;
 ### How to delete users?
 ```sql
 DROP USER  [user name];
-DROP USER  tia;
+DROP USER  tcc;
 ```
 
 ### Drop a table
@@ -97,13 +97,14 @@ CREATE DATABASE hr;
 CREATE USER john WITH ENCRYPTED PASSWORD '12345';
 GRANT ALL PRIVILEGES ON DATABASE hr TO john;
 
-psql -h artifactory.devopseasylearning.net -p 5432 -U john -W -d hr 
+psql -h artifactory.artifactory.tcclearning.cf -p 5432 -U john -W -d hr
+psql -h tcc-aurora-postgres-cluster.cluster-cqmehbekbflr.us-east-1.rds.amazonaws.com -p 5432 -U john -W -d hr  
 ```
 
 ## run sql script
 ```sh
-psql -h artifactory.devopseasylearning.net -p 5432 -U john -W -d hr < /root/hr.sql
-psql -h artifactory.devopseasylearning.net -p 5432 -U john -W -d hr < /root/contacts.sql
+psql -h artifactory.artifactory.tcclearning.cf -p 5432 -U john -W -d hr < /root/hr.sql
+psql -h artifactory.artifactory.tcclearning.cf -p 5432 -U john -W -d hr < /root/contacts.sql
 
 ## list table
 \dt
