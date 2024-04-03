@@ -64,7 +64,7 @@ resource "aws_rds_cluster_instance" "tcc_db_instances" {
   engine_version       = var.engine_version
   publicly_accessible  = var.publicly_accessible
   db_subnet_group_name = aws_db_subnet_group.tcc_rds_subnet_group.name
-  identifier           = "tcc-${count.index + 1}"
+  identifier           = "tcyprien-${count.index + 1}"
   lifecycle {
     ignore_changes = [
       engine_version
@@ -73,6 +73,14 @@ resource "aws_rds_cluster_instance" "tcc_db_instances" {
   tags = {
     Name = "tcc_db_instances-${count.index + 1}"
   }
+}
+
+resource "aws_route53_record" "cluster-alias" {
+  zone_id = "Z02628573J1LNVJ1YWLC4"
+  name    = "artifactory"
+  type    = "CNAME"
+  ttl     = "30"
+  records = [aws_rds_cluster.tcc_db_cluster.endpoint]
 }
 
 output "cluster-master-password" {

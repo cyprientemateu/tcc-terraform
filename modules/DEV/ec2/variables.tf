@@ -20,7 +20,7 @@ variable "key_name" {
 
 variable "vpc_security_group_ids" {
   type    = list(string)
-  default = [aws_security_group.tcc_sg.id]
+  default = []
 }
 
 variable "vpc_id" {
@@ -54,9 +54,9 @@ variable "tags" {
 variable "backend" {
   type = map(string)
   default = {
-    bucket         = ""
-    dynamodb_table = ""
-    key            = ""
-    region         = ""
+    bucket         = "cyprienbucket"
+    dynamodb_table = "terraform-lock"
+    key            = "TCC/ec2/terraform.tfstate"
+    region         = "us-east-1"
   }
 }

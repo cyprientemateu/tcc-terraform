@@ -17,14 +17,6 @@ variable "avalability_zones" {
   ]
 }
 
-# variable "db_subnet_group_name" {
-#   description = "Name of the DB subnet group"
-# }
-
-# variable "vpc_security_group_ids" {
-#   description = "List of VPC security group IDs"
-# }
-
 variable "vpc_id" {
   description = "The ID of the VPC where the security group will be created."
   type        = string
@@ -76,7 +68,7 @@ variable "master_username" {
 variable "database_name" {
   description = "The username for the master user."
   type        = string
-  default     = "tcc-db"
+  default     = "tcyprien"
 }
 
 variable "backup_retention_period" {
@@ -94,9 +86,9 @@ variable "preferred_backup_window" {
 variable "backend" {
   type = map(string)
   default = {
-    bucket         = ""
-    dynamodb_table = ""
-    key            = ""
-    region         = ""
+    bucket         = "cyprienbucket"
+    dynamodb_table = "terraform-lock"
+    key            = "TCC/aurora-PostgreSQL-db/terraform.tfstate"
+    region         = "us-east-1"
   }
 }
