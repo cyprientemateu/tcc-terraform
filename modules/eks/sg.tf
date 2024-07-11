@@ -1,6 +1,6 @@
 # Security Group for Worker Nodes
 resource "aws_security_group" "worker_nodes_sg" {
-  name        = "worker-nodes-sg"
+  name        = format("worker-nodes-sg-%s-%s", var.tags["id"], var.tags["project"])
   description = "Security group for Amazon EKS worker nodes"
 
   vpc_id = aws_vpc.tcc_vpc.id # Replace with your VPC ID
@@ -24,7 +24,7 @@ resource "aws_security_group" "worker_nodes_sg" {
 
 # Security Group for EKS Control Plane (Master Nodes)
 resource "aws_security_group" "eks_control_plane_sg" {
-  name        = "eks-control-plane-sg"
+  name        = format("eks-control-plane-sg-%s-%s", var.tags["id"], var.tags["project"])
   description = "Security group for Amazon EKS control plane (master nodes)"
 
   vpc_id = aws_vpc.tcc_vpc.id # Replace with your VPC ID

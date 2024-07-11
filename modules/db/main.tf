@@ -1,13 +1,14 @@
 resource "aws_db_subnet_group" "tcc_rds_subnet_group" {
-  name       = "tcc_rds_subnet_group"
+  name       = format("tcc-rds-subnet-group-%s-%s-%s", var.tags["id"], var.tags[environment], var.tags["project"])
   subnet_ids = var.subnet_ids
-  tags = {
-    Name = "tcc_rds_subnet_group"
-  }
+  tags = merge(var.tags, {
+    Name = format("%s-%s-%s-tcc-rds-subnet-group", var.tags["id"], var.tags["environment"], var.tags["project"])
+    },
+  )
 }
 
 resource "aws_security_group" "tcc_rds_sg" {
-  name        = "tcc_rds_sg"
+  name        = format("tcc-rds-sg-%s-%s-%s", var.tags["id"], var.tags[environment], var.tags["project"])
   description = "Example Security Group for Aurora PostgreSQL"
   vpc_id      = var.vpc_id
 
@@ -25,19 +26,20 @@ resource "aws_security_group" "tcc_rds_sg" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
-  tags = {
-    Name = "tcc_rds_sg"
-  }
+  tags = merge(var.tags, {
+    Name = format("%s-%s-%s-tcc-rds-sg", var.tags["id"], var.tags["environment"], var.tags["project"])
+    },
+  )
 }
 
 resource "aws_rds_cluster_parameter_group" "tcc-rds-cluster-parameter-group" {
-  name        = "tcc-rds-cluster-parameter-group"
-  family      = "aurora-postgresql11"
-  description = "RDS Cluster parameter group"
+  name        = format("tcc-rds-cluster-parameter-group-%s-%s-%s", var.tags["id"], var.tags[environment], var.tags["project"])
+  family      = var.cluster_family
+  description = format("tcc-rds-cluster-parameter-group-%s-%s-%s", var.tags["id"], var.tags[environment], var.tags["project"])
 }
 
 resource "aws_rds_cluster" "tcc_db_cluster" {
-  cluster_identifier      = var.cluster_identifier
+  cluster_identifier      = format("pg-%s-%s-%s-${var.database_name}-cluster", var.tags["id"], var.tags["environment"], var.tags["project"])
   engine                  = var.engine
   engine_version          = var.engine_version
   availability_zones      = var.avalability_zones
@@ -52,7 +54,7 @@ resource "aws_rds_cluster" "tcc_db_cluster" {
   deletion_protection     = false
   storage_encrypted       = true
   tags = {
-    Name = var.cluster_identifier
+    Name = format("%s-%s-%s-${var.database_name}-cluster", var.tags["id"], var.tags["environment"], var.tags["project"])
   }
 }
 
@@ -64,14 +66,14 @@ resource "aws_rds_cluster_instance" "tcc_db_instances" {
   engine_version       = var.engine_version
   publicly_accessible  = var.publicly_accessible
   db_subnet_group_name = aws_db_subnet_group.tcc_rds_subnet_group.name
-  identifier           = "tcyprien-${count.index + 1}"
+  identifier           = "${var.database_name}-${count.index + 1}"
   lifecycle {
     ignore_changes = [
       engine_version
     ]
   }
   tags = {
-    Name = "tcc_db_instances-${count.index + 1}"
+    Name = "${var.database_name}-${count.index + 1}"
   }
 }
 

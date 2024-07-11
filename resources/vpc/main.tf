@@ -15,7 +15,7 @@ provider "aws" {
 terraform {
   backend "s3" {
     bucket         = "1119-a1-main-backend"
-    dynamodb_table = "dynamodb-tcc-1119"
+    dynamodb_table = "1119-a1-dynamodb"
     key            = "vpc/terraform.statefile"
     region         = "us-east-1"
   }
@@ -32,7 +32,7 @@ locals {
 }
 
 module "vpc" {
-  source               = "../../modules/DEV/vpc"
+  source               = "../../modules/vpc"
   aws_region           = local.aws_region
   vpc_name             = local.vpc_name
   vpc_cidr             = local.vpc_cidr

@@ -1,5 +1,5 @@
 echo "******************************************************"
-echo "Deploying the bastion host module"
+echo "Deleting the ec2 module"
 echo "******************************************************"
 sleep 3
 cd resources/ec2
@@ -8,7 +8,7 @@ terraform destroy --auto-approve
 cd -
 
 echo "******************************************************"
-echo "Deploying vpc module"
+echo "Deleting vpc module"
 echo "******************************************************"
 sleep 3
 cd resources/vpc

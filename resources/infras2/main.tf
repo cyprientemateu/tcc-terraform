@@ -39,7 +39,7 @@ locals {
 }
 
 module "ec2" {
-  source                 = "../../modules/DEV/ec2"
+  source                 = "../../modules/ec2"
   aws_region             = local.aws_region
   ami                    = local.ami
   instance_type          = local.instance_type
@@ -51,7 +51,7 @@ module "ec2" {
 }
 
 module "s3" {
-  source = "../../modules/DEV/s3"
+  source = "../../modules/s3"
   #   region        = local.aws_region
   random_s3     = local.random_s3
   s3_versioning = local.s3_versioning

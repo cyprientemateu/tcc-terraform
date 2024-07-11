@@ -81,8 +81,7 @@ locals {
 # }
 
 module "ec2" {
-  # source = "../../modules/QA/ec2-01"
-  source                 = "../../modules/DEV/ec2"
+  source                 = "../../modules/ec2"
   aws_region             = local.aws_region
   ami                    = local.ami
   instance_type          = local.instance_type
@@ -94,7 +93,7 @@ module "ec2" {
 }
 
 # module "s3" {
-#   source     = "../../modules/DEV/s3"
+#   source     = "../../modules/s3"
 #   aws_region = local.aws_region
 #   random_s3 = {
 #     special = false
@@ -107,12 +106,12 @@ module "ec2" {
 # }
 
 module "s3" {
-  source        = "../../modules/DEV/s3"
+  source        = "../../modules/s3"
   random_s3     = local.random_s3
   s3_versioning = local.s3_versioning
 }
 
 module "db" {
-  source = "../../modules/DEV/db"
+  source = "../../modules/db"
   vpc_id = local.vpc_id
 }

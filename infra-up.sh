@@ -19,7 +19,7 @@ terraform apply --auto-approve
 cd -
 
 echo "******************************************************"
-echo "Deploying the bastion host module"
+echo "Deploying ec2 module for bastion host"
 echo "******************************************************"
 sleep 3
 cd resources/ec2

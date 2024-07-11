@@ -8,7 +8,7 @@ variable "vpc_cidr" {
 }
 variable "vpc_name" {
   type    = string
-  default = "tcc-vpc"
+  default = ""
 }
 variable "nat_number" {
   type    = number
@@ -25,6 +25,11 @@ variable "private_subnet_cidrs" {
 variable "availability_zones" {
   type    = list(string)
   default = ["us-east-1a", "us-east-1b", "us-east-1c"]
+}
+
+variable "cluster_name" {
+  type    = string
+  default = ""
 }
 
 variable "tags" {

@@ -1,5 +1,5 @@
 aws_region             = "us-east-1"
-ami                    = "ami-0c7217cdde317cfec"
+ami                    = "ami-09d438ec274a2ce82"
 instance_type          = "t2.micro"
 key_name               = "terraform"
 vpc_security_group_ids = []

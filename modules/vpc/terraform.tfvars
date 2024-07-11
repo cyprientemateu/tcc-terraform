@@ -7,7 +7,7 @@ availability_zones   = ["us-east-1a", "us-east-1b", "us-east-1c"]
 
 backend = {
   bucket         = "1119-a1-main-backend"
-  dynamodb_table = "dynamodb-tcc-1119"
+  dynamodb_table = "1119-a1-dynamodb"
   key            = "vpc/terraform.statefile"
   region         = "us-east-1"
   encript        = true

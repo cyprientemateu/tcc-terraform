@@ -42,7 +42,7 @@ locals {
 
 module "ec2" {
   # source = "git@github.com:cyprientemateu/terraform-test/tree/main/modules/DEV/ec2"
-  source                 = "github.com/cyprientemateu/terraform-test/modules/DEV/ec2"
+  source                 = "github.com/cyprientemateu/terraform-test/modules/ec2"
   aws_region             = local.aws_region
   ami                    = local.ami
   instance_type          = local.instance_type

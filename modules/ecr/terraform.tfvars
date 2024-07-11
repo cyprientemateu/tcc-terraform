@@ -1,15 +1,5 @@
 aws_region = "us-east-1"
 
-tags = {
-  "id"             = "1119"
-  "owner"          = "TCC"
-  "teams"          = "devops"
-  "environment"    = "development"
-  "project"        = "a1-ecr"
-  "create_by"      = "Terraform"
-  "cloud_provider" = "aws"
-}
-
 backend = {
   bucket         = ""
   dynamodb_table = ""

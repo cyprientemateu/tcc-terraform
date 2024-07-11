@@ -5,7 +5,7 @@ variable "aws_region" {
 
 variable "ami" {
   type    = string
-  default = "ami-0c7217cdde317cfec"
+  default = "ami-09d438ec274a2ce82"
 }
 
 variable "instance_type" {
@@ -15,17 +15,22 @@ variable "instance_type" {
 
 variable "key_name" {
   type    = string
-  default = "terraform"
+  default = ""
 }
 
 variable "vpc_security_group_ids" {
   type    = list(string)
-  default = ["sg-0fa88e0bcf2d36083"]
+  default = []
+}
+
+variable "vpc_id" {
+  type    = string
+  default = ""
 }
 
 variable "subnet_id" {
   type    = string
-  default = "subnet-02e286c9bdfb33f0b"
+  default = ""
 }
 
 variable "volume_size" {
@@ -55,22 +60,3 @@ variable "backend" {
     region         = ""
   }
 }
-
-variable "tcc_ports" {
-  type = list(number)
-  default = [
-    22,
-    80,
-    8080
-  ]
-}
-
-# variable "vpc_id" {
-#   description = "aws_vpc.tcc_vpc"
-#   type        = string
-# }
-
-# variable "vpc_cidr" {
-#   description = "10.0.0.0/16"
-#   type        = string
-# }

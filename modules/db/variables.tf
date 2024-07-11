@@ -32,7 +32,7 @@ variable "subnet_ids" {
 variable "cluster_identifier" {
   description = "The identifier for the RDS cluster."
   type        = string
-  default     = "tcc-aurora-postgres-cluster"
+  default     = ""
 }
 
 variable "instance_class" {
@@ -51,6 +51,11 @@ variable "publicly_accessible" {
   description = "Specifies whether the RDS cluster instances can be publicly accessed."
   type        = bool
   default     = true
+}
+
+variable "cluster_family" {
+  type    = string
+  default = "aurora-postgresql11"
 }
 
 variable "engine" {
@@ -90,5 +95,18 @@ variable "backend" {
     dynamodb_table = ""
     key            = ""
     region         = ""
+  }
+}
+
+variable "tags" {
+  type = map(any)
+  default = {
+    "id"             = "1119"
+    "owner"          = "TCC"
+    "teams"          = "Devops"
+    "environment"    = "development"
+    "project"        = "a1"
+    "create_by"      = "Terraform"
+    "cloud_provider" = "aws"
   }
 }
