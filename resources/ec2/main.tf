@@ -1,9 +1,9 @@
 terraform {
-  required_version = "~> 1.0.0"
+  required_version = ">= 1.0.0"
   required_providers {
     aws = {
       source  = "hashicorp/aws"
-      version = "~> 3.0"
+      version = "~> 4.0"
     }
   }
 }
@@ -27,8 +27,9 @@ locals {
   instance_type          = "t2.micro"
   key_name               = "terraform"
   vpc_security_group_ids = ["sg-0fa88e0bcf2d36083"]
-  subnet_id              = "subnet-02e286c9bdfb33f0b"
-  volume_size            = "10"
+  # vpc_security_group_ids = ["aws_security_group.new_sg.id"]
+  subnet_id   = "subnet-02e286c9bdfb33f0b"
+  volume_size = "10"
   tags = {
     "id"             = "1119"
     "owner"          = "TCC"

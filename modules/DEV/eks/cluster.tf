@@ -36,6 +36,7 @@ resource "aws_eks_cluster" "tcc_eks_cluster" {
   vpc_config {
     endpoint_private_access = var.endpoint_private_access
     endpoint_public_access  = var.endpoint_public_access
+    public_access_cidrs     = var.endpoint_public_access_cidrs
 
     # subnet_ids = concat(var.public_subnet_ids, var.private_subnet_ids)
     subnet_ids = [
@@ -45,6 +46,14 @@ resource "aws_eks_cluster" "tcc_eks_cluster" {
       aws_subnet.private_2.id
     ]
   }
+
+
+  kubernetes_network_config {
+    service_ipv4_cidr = var.cluster_service_ipv4_cidr
+  }
+
+  # Enable EKS Cluster Control Plane Logging
+  enabled_cluster_log_types = ["api", "audit", "authenticator", "controllerManager", "scheduler"]
 
   depends_on = [
     aws_iam_role_policy_attachment.tcc-AmazonEKSClusterPolicy,

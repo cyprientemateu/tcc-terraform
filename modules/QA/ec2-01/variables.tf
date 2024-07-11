@@ -65,12 +65,12 @@ variable "tcc_ports" {
   ]
 }
 
-variable "vpc_id" {
-  description = "aws_vpc.tcc_vpc"
-  type        = string
-}
+# variable "vpc_id" {
+#   description = "aws_vpc.tcc_vpc"
+#   type        = string
+# }
 
-variable "vpc_cidr" {
-  description = "10.0.0.0/16"
-  type        = string
-}
+# variable "vpc_cidr" {
+#   description = "10.0.0.0/16"
+#   type        = string
+# }

@@ -26,6 +26,7 @@ locals {
   aws_region_main   = "us-east-1"
   aws_region_backup = "us-east-2"
   s3_versioning     = "Enabled"
+  force_destroy     = true
 }
 
 module "s3" {

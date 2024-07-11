@@ -20,3 +20,8 @@ variable "tags" {
     "cloud_provider" = "aws"
   }
 }
+
+variable "force_destroy" {
+  type    = bool
+  default = true
+}

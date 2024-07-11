@@ -18,8 +18,30 @@ output "private_subnet_ids" {
   value = var.private_subnet_ids
 }
 
+output "endpoint" {
+  value = aws_eks_cluster.tcc_eks_cluster.endpoint
+}
+
+output "kubeconfig-certificate-authority-data" {
+  value = aws_eks_cluster.tcc_eks_cluster.certificate_authority[0].data
+}
+
 output "vpc_id" {
   value       = aws_vpc.tcc_vpc.id
   description = "VPC id."
   sensitive   = false
+}
+
+output "public_subnet_ids" {
+  value = [
+    aws_subnet.public_1.id,
+    aws_subnet.public_2.id
+  ]
+}
+
+output "private_subnet_ids" {
+  value = [
+    aws_subnet.private_1.id,
+    aws_subnet.private_2.id
+  ]
 }

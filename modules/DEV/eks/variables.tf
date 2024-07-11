@@ -21,11 +21,23 @@ variable "endpoint_public_access" {
   type = bool
 }
 
+variable "endpoint_public_access_cidrs" {
+  description = "List of CIDR blocks which can access the Amazon EKS public API server endpoint."
+  type        = list(string)
+  default     = ["0.0.0.0/0"]
+}
+
+variable "cluster_service_ipv4_cidr" {
+  description = "service ipv4 cidr for the kubernetes cluster"
+  type        = string
+  default     = null
+}
+
 variable "tags" {
   type = map(any)
   default = {
     "id"             = "1119"
-    "owner"          = "TCC"
+    "owner"          = "tcc"
     "teams"          = "Devops"
     "environment"    = "development"
     "project"        = "a1"
@@ -43,7 +55,7 @@ variable "public_subnet_ids" {
 variable "private_subnet_ids" {
   type    = list(string)
   default = [""]
-
+  # default = ["aws_subnet.private_1", "aws_subnet.private_2"]
 }
 
 #Assuming you already have subnet IDs, you can define them as variables

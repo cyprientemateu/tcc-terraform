@@ -2,15 +2,17 @@ aws_region = "us-east-1"
 
 eks_name = ""
 
-eks_version = 1.26
+eks_version = 1.28
 
 endpoint_public_access = true
 
 endpoint_private_access = false
 
+endpoint_public_access_cidrs = ["0.0.0.0/0"]
+
 tags = {
   "id"             = "1119"
-  "owner"          = "TCC"
+  "owner"          = "tcc"
   "teams"          = "Devops"
   "environment"    = "development"
   "project"        = "a1"

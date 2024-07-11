@@ -1,9 +1,9 @@
 terraform {
-  required_version = "~> 1.0.0"
+  required_version = ">= 1.0.0"
   required_providers {
     aws = {
       source  = "hashicorp/aws"
-      version = "~> 3.0"
+      version = "~> 4.0"
     }
   }
 }
@@ -14,9 +14,9 @@ provider "aws" {
 
 terraform {
   backend "s3" {
-    bucket         = "cyprienbucket"
-    dynamodb_table = "terraform-lock"
-    key            = "tcc/terraform.tfstate"
+    bucket         = "1119-a1-main-backend"
+    dynamodb_table = "dynamodb-tcc-1119"
+    key            = "vpc/terraform.statefile"
     region         = "us-east-1"
   }
 }
